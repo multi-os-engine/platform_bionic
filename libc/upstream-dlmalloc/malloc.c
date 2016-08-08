@@ -565,6 +565,7 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #endif /*MMAP_CLEARS */
 #endif  /* WIN32 */
 
+#ifndef MOE
 #if defined(DARWIN) || defined(_DARWIN)
 /* Mac OSX docs advise not to use sbrk; it seems better to use mmap */
 #ifndef HAVE_MORECORE
@@ -576,6 +577,19 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #endif
 #endif  /* HAVE_MORECORE */
 #endif  /* DARWIN */
+#else
+#if defined(DARWIN) || defined(_DARWIN) || defined(__APPLE__)
+/* Mac OSX docs advise not to use sbrk; it seems better to use mmap */
+#ifndef HAVE_MORECORE
+#define HAVE_MORECORE 0
+#define HAVE_MMAP 1
+/* OSX allocators provide 16 byte alignment */
+#ifndef MALLOC_ALIGNMENT
+#define MALLOC_ALIGNMENT ((size_t)16U)
+#endif
+#endif  /* HAVE_MORECORE */
+#endif  /* DARWIN */
+#endif
 
 #ifndef LACKS_SYS_TYPES_H
 #include <sys/types.h>  /* For size_t */

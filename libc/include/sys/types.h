@@ -91,9 +91,10 @@ typedef __kernel_time_t __time_t;
 typedef __time_t time_t;
 
 #if defined(__USE_FILE_OFFSET64) || defined(__LP64__)
-typedef int64_t off_t;
+//[XRT] : off_t defined in MacOS/iOS SDK
+/*typedef int64_t off_t;
 typedef off_t loff_t;
-typedef loff_t off64_t;
+typedef loff_t off64_t;*/
 #else
 /* This historical accident means that we had a 32-bit off_t on 32-bit architectures. */
 typedef __kernel_off_t off_t;

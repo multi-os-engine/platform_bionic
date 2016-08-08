@@ -22,6 +22,17 @@
 #define B_PACK_CHARS(c1,c2,c3,c4) ((((c1) << 24)) | (((c2) << 16)) | (((c3) << 8)) | (c4))
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define B_TYPE_LARGE 0x85
+
+#ifdef MOE
+typedef __signed__ char __s8;
+typedef unsigned char __u8;
+typedef __signed__ short __s16;
+typedef unsigned short __u16;
+typedef __signed__ int __s32;
+typedef unsigned int __u32;
+typedef __signed__ long __s64;
+typedef unsigned long __u64;
+#endif
 enum {
   BINDER_TYPE_BINDER = B_PACK_CHARS('s', 'b', '*', B_TYPE_LARGE),
   BINDER_TYPE_WEAK_BINDER = B_PACK_CHARS('w', 'b', '*', B_TYPE_LARGE),
@@ -122,11 +133,11 @@ struct binder_ptr_cookie {
   binder_uintptr_t cookie;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
-struct binder_handle_cookie {
+/*struct binder_handle_cookie {
   __u32 handle;
   binder_uintptr_t cookie;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-} __packed;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS /
+} __packed;*/
 struct binder_pri_desc {
   __s32 priority;
   __u32 desc;
@@ -163,28 +174,28 @@ enum binder_driver_return_protocol {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   BR_FAILED_REPLY = _IO('r', 17),
 };
-enum binder_driver_command_protocol {
+/*enum binder_driver_command_protocol {
   BC_TRANSACTION = _IOW('c', 0, struct binder_transaction_data),
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS/
   BC_REPLY = _IOW('c', 1, struct binder_transaction_data),
   BC_ACQUIRE_RESULT = _IOW('c', 2, __s32),
   BC_FREE_BUFFER = _IOW('c', 3, binder_uintptr_t),
   BC_INCREFS = _IOW('c', 4, __u32),
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS/
   BC_ACQUIRE = _IOW('c', 5, __u32),
   BC_RELEASE = _IOW('c', 6, __u32),
   BC_DECREFS = _IOW('c', 7, __u32),
   BC_INCREFS_DONE = _IOW('c', 8, struct binder_ptr_cookie),
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS/
   BC_ACQUIRE_DONE = _IOW('c', 9, struct binder_ptr_cookie),
   BC_ATTEMPT_ACQUIRE = _IOW('c', 10, struct binder_pri_desc),
   BC_REGISTER_LOOPER = _IO('c', 11),
   BC_ENTER_LOOPER = _IO('c', 12),
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS /
   BC_EXIT_LOOPER = _IO('c', 13),
   BC_REQUEST_DEATH_NOTIFICATION = _IOW('c', 14, struct binder_handle_cookie),
   BC_CLEAR_DEATH_NOTIFICATION = _IOW('c', 15, struct binder_handle_cookie),
   BC_DEAD_BINDER_DONE = _IOW('c', 16, binder_uintptr_t),
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS /
+};*/
 #endif
